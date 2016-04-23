@@ -1,3 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<%= @user %>
+<h1>User detail</h1>
+<div>
+  <%= image_tag @user.image %>
+</div>
+<ul>
+  <li>uid: <%= @user.uid %></li>
+  <li>name: <%= @user.name %></li>
+  <li>nickname: <%= @user.nickname %></li>
+  <li>description: <%= @user.description %></li>
+</ul>
