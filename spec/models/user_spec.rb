@@ -9,6 +9,9 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :token }
     it { should validate_presence_of :secret }
 
+    it { should validate_length_of(:name).is_at_most 255 }
+    it { should validate_length_of(:nickname).is_at_most 255 }
+
     it { should validate_numericality_of(:uid).only_integer }
   end
 

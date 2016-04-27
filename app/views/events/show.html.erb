@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<dl>
+  <dt>title</dt>
+  <dd><%= @event.title %></dd>
+  <dt>hold at</dt>
+  <dd><%= @event.hold_at %></dd>
+  <dt>capacity</dt>
+  <dd><%= @event.capacity %></dd>
+  <dt>location</dt>
+  <dd><%= @event.location %></dd>
+  <dt>owner</dt>
+  <dd><%= @event.owner %></dd>
+  <dt>description</dt>
+  <dd><%= simple_format(h @event.description) %></dd>
+</dl>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
