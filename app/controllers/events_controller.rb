@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :login_required, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /events
   def index
@@ -42,7 +43,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   def destroy
     @event.destroy
-    redirect_to user_events_url, notice: 'Event was successfully destroyed.'
+    redirect_to events_url, notice: 'Event was successfully destroyed.'
   end
 
   private
@@ -54,5 +55,12 @@ class EventsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.fetch(:event, {}).permit(:user_id, :title, :hold_at, :capacity, :location, :owner, :description)
+  end
+
+  def login_required
+    unless logged_in?
+      flash[:alert] = 'Please login first.'
+      redirect_to events_url
+    end
   end
 end
