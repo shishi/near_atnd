@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root :to => 'events#index'
+
   get '/auth/twitter/callback' => 'sessions#create'
   get '/auth/failure' => 'sessions#failure'
 
