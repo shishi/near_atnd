@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  describe '#validates' do
+  describe '.validates' do
     it { should validate_presence_of :title }
     it { should validate_presence_of :hold_at }
     it { should validate_presence_of :capacity }

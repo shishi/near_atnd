@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.label :title %> <%= f.text_field :title %><br>
   <%= f.label :hold_at %> <%= f.datetime_select :hold_at %><br>
   <%= f.label :capacity %> <%= f.number_field :capacity %><br>

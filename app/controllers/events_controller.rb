@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :login_required, only: [:new, :edit, :create, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   def index
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(event_params.merge(user_id: current_user.id))
 
     if @event.save
       redirect_to @event, notice: 'Event was successfully created.'
@@ -54,7 +54,7 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.fetch(:event, {}).permit(:user_id, :title, :hold_at, :capacity, :location, :owner, :description)
+    params.fetch(:event, {}).permit(:title, :hold_at, :capacity, :location, :owner, :description)
   end
 
   def login_required
