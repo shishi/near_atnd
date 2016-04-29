@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe '/events', type: :feature do
   subject { page }
+
   describe '/events' do
     let!(:events) { create_list :event, 3 }
     before do

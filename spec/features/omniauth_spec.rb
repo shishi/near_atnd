@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe '/auth', type: :feature do
+  subject { page }
+
   describe '/auth/twitter' do
     let(:user){ create :user }
 
@@ -26,8 +28,8 @@ RSpec.describe '/auth', type: :feature do
       end
 
       it { current_path.should eq events_path }
-      it { page.should have_content "login as #{user.name}" }
-      it { page.should_not have_content 'login failure' }
+      it { should have_content "login as #{user.name}" }
+      it { should_not have_content 'login failure' }
     end
 
     context 'failure'do
@@ -38,7 +40,7 @@ RSpec.describe '/auth', type: :feature do
       end
 
       it { current_path.should eq events_path }
-      it { page.should have_content 'login failure' }
+      it { should have_content 'login failure' }
     end
   end
 
@@ -51,8 +53,8 @@ RSpec.describe '/auth', type: :feature do
       end
 
       it { current_path.should eq user_path id: user.id }
-      it { page.should have_content 'log-in with Twitter' }
-      it { page.should_not have_content 'log-out' }
+      it { should have_content 'log-in with Twitter' }
+      it { should_not have_content 'log-out' }
     end
 
     context 'logged-in' do
@@ -64,8 +66,8 @@ RSpec.describe '/auth', type: :feature do
       end
 
       it { current_path.should eq user_path id: user.id }
-      it { page.should have_content 'log-out' }
-      it { page.should_not have_content 'log-in with Twitter' }
+      it { should have_content 'log-out' }
+      it { should_not have_content 'log-in with Twitter' }
 
       context 'exec log-out' do
         before do
@@ -73,8 +75,8 @@ RSpec.describe '/auth', type: :feature do
         end
 
         it { current_path.should eq events_path }
-        it { page.should have_content 'log-in with Twitter' }
-        it { page.should_not have_content 'log-out' }
+        it { should have_content 'log-in with Twitter' }
+        it { should_not have_content 'log-out' }
       end
     end
   end
