@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def login_required
+    unless logged_in?
+      flash[:alert] = 'Please login first.'
+      redirect_to events_url
+    end
+  end
 end

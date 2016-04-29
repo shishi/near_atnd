@@ -13,7 +13,28 @@
   <dd><%= simple_format(h @event.description) %></dd>
 </dl>
 
+attendance
+<ul id="attendance">
+  <% @event.atendees.attended.each do |atendee| %>
+  <li><%= image_tag atendee.user.image %> <%= link_to atendee.user.name, user_path(atendee.user) %></li>
+<% end %>
+</ul>
+<br>
+absence
+<ul id="absence">
+  <% @event.atendees.absented.each do |atendee| %>
+    <li><%= image_tag atendee.user.image %> <%= link_to atendee.user.name, user_path(atendee.user) %></li>
+  <% end %>
+</ul>
+
+
 <% if logged_in? %>
+  <% if already_atended? %>
+    <%= link_to 'Absent', absent_event_path(@event) %>
+  <% else %>
+    <%= link_to 'Atend', atend_event_path(@event) %>
+  <% end %>
+  <br>
   <%= link_to 'Edit', edit_event_path(@event) %> |
   <%= link_to 'Destroy', event_path(@event), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

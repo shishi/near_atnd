@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :events
+  has_many :atendees
 
   validates :uid, presence: true, numericality: { only_integer: true }
   validates :name, presence: true, length: { maximum: 255 }

@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   belongs_to :user
+  has_many :atendees
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :hold_at, presence: true

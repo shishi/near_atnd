@@ -56,11 +56,4 @@ class EventsController < ApplicationController
   def event_params
     params.fetch(:event, {}).permit(:title, :hold_at, :capacity, :location, :owner, :description)
   end
-
-  def login_required
-    unless logged_in?
-      flash[:alert] = 'Please login first.'
-      redirect_to events_url
-    end
-  end
 end
