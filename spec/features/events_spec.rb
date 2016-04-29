@@ -156,11 +156,11 @@ RSpec.describe '/events', type: :feature do
       before do
         login! user
         visit new_event_path
-        fill_in 'Title', with: title
-        fill_in 'Capacity', with: 10
-        fill_in 'Location', with: 'test location'
-        fill_in 'Owner', with: 'test owner'
-        fill_in 'Description', with: 'test description'
+        fill_in 'event_title', with: title
+        fill_in 'event_capacity', with: 10
+        fill_in 'event_location', with: 'test location'
+        fill_in 'event_owner', with: 'test owner'
+        fill_in 'event_description', with: 'test description'
         click_button 'Create Event'
       end
 
@@ -188,7 +188,7 @@ RSpec.describe '/events', type: :feature do
       before do
         login! event.user
         visit edit_event_path event
-        fill_in 'Title', with: title
+        fill_in 'event_title', with: title
         click_button 'Update Event'
       end
 
@@ -196,5 +196,4 @@ RSpec.describe '/events', type: :feature do
       it { should have_content title }
     end
   end
-
 end
