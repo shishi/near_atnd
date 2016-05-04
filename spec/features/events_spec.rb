@@ -193,7 +193,7 @@ RSpec.describe '/events', type: :feature do
         click_button 'Update Event'
       end
 
-      it { current_path.should eq event_path(Event.last) }
+      it { current_path.should eq event_path(event) }
       it { should have_content title }
     end
   end

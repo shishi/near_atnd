@@ -32,7 +32,7 @@ RSpec.describe '/auth', type: :feature do
       it { should_not have_content 'login failure' }
     end
 
-    context 'failure'do
+    context 'failure' do
       before do
         OmniAuth.config.mock_auth[:twitter] = :invalid_credentials
         visit user_path id: user.id
